@@ -54,7 +54,7 @@ namespace UnityStandardAssets._2D
         public float minPulseDist = 5f;          // distance at which the pulse is at maximum power
         public float pulseForce = 100f;
         int magMask;                             // layermask that magnet affects
-		int bombBotMask;						 // layermask for bomb bot
+	int bombBotMask;			 // layermask for bomb bot
         public bool magPause = false;            // true to escape head magnet pull
         float magTimer = 0f;                     // timer for magPause
         public float magPauseLength = 0.25f;     // length of magPause
@@ -177,13 +177,13 @@ namespace UnityStandardAssets._2D
                 }
             }
 
-			// tells a bomb bot to lock on if Maggie points her magnet at it
-			if (!magPause) {
-				RaycastHit2D botHit = Physics2D.Raycast (transform.position, forward, magHeadRange, bombBotMask);
-				if (botHit) {
-					botHit.collider.SendMessage ("LockOn");
-				}
-			}
+	    // tells a bomb bot to lock on if Maggie points her magnet at it
+	    if (!magPause) {
+	        RaycastHit2D botHit = Physics2D.Raycast (transform.position, forward, magHeadRange, bombBotMask);
+		    if (botHit) {
+	                botHit.collider.SendMessage ("LockOn");
+	            }
+	    }
             
 
 
