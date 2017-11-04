@@ -361,5 +361,22 @@ namespace UnityStandardAssets._2D
         {
             polarity = polarity * (-1);
         }
+
+        private void OnCollisionEnter2D(Collision2D other)      //on collision with a moving platform, maggie will become
+        {                                                       //a child of moving platform so she will collide with it
+            if (other.transform.tag == "MovingPlatform")
+            {
+                transform.parent = other.transform;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D other)       //When maggie leaves of the moving platform, she reverts back
+        {                                                       //and is no longer a child of moving platform so she can move at will
+
+            if (other.transform.tag == "MovingPlatform")
+            {
+                transform.parent = null;
+            }
+        }
     }
 }
