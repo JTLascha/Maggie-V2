@@ -260,11 +260,13 @@ namespace UnityStandardAssets._2D
             {
                 m_Anim.SetFloat("Speed", 0f);                                                       // Maggie isn't walking if she's clamped
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;         // freeze Maggie's movement
+                gun.GetComponent<MouseLook>().enabled = false;
                 //MoveWith(clampedto);
             }
             else
             {
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;    // unfreeze Maggie's movement
+                gun.GetComponent<MouseLook>().enabled = true;
                 clampedto = null;
             }
         }
@@ -334,15 +336,16 @@ namespace UnityStandardAssets._2D
                 // Add a vertical force to the player.
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
-                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+                if (!clamped) { m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce)); }
             }
             // If the player should jump while clamped...
-            if (clamped && jump)
+            if (clamped && (jump || pulse))
             {
                 clamped = false;                                                                    // unclamp her
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;    // unfreeze Maggie's movement
                 magTimer = magPauseLength;                                                          // temporarily turn off the magnet
-                if (!m_Grounded) { m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce)); }          // jump!
+                if (jump) { m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce)); }                 // jump!
+                pulseReady = true;                                                                  // Maggie can use the pulse again
             }
         }
 
