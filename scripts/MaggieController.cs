@@ -154,7 +154,7 @@ namespace UnityStandardAssets._2D
                 if(hit)
                 {
                     float distance = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(transform.position.x - hit.point.x), 2) + Mathf.Pow(Mathf.Abs(transform.position.y - hit.point.y), 2) );
-                    if(distance < 0.65f && polarity > 0)
+                    if(distance < 1.0f && polarity > 0)
                     {
                         clamped = true;
                         clampedto = hit.collider.gameObject;
@@ -179,7 +179,7 @@ namespace UnityStandardAssets._2D
 
 	    // tells a bomb bot to lock on if Maggie points her magnet at it
 	    if (!magPause) {
-	        RaycastHit2D botHit = Physics2D.Raycast (transform.position, forward, magHeadRange, bombBotMask);
+	        RaycastHit2D botHit = Physics2D.Raycast (transform.position, forward, magHeadRange, bombBotMask);   // *** Potential problem: This could allow a bombbot to detect the magnet through a wall.
 		    if (botHit) {
 	                botHit.collider.SendMessage ("LockOn");
 	            }
@@ -259,12 +259,12 @@ namespace UnityStandardAssets._2D
             if (clamped)
             {
                 m_Anim.SetFloat("Speed", 0f);                                                       // Maggie isn't walking if she's clamped
-                m_Anim.SetBool("Crouch", true);                                                     // temporarily using crouch for clamp animation
-                MoveWith(clampedto);
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;         // freeze Maggie's movement
+                //MoveWith(clampedto);
             }
             else
             {
-                m_Anim.SetBool("Crouch", false);
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;    // unfreeze Maggie's movement
                 clampedto = null;
             }
         }
@@ -339,7 +339,10 @@ namespace UnityStandardAssets._2D
             // If the player should jump while clamped...
             if (clamped && jump)
             {
-                magTimer = magPauseLength;
+                clamped = false;                                                                    // unclamp her
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;    // unfreeze Maggie's movement
+                magTimer = magPauseLength;                                                          // temporarily turn off the magnet
+                if (!m_Grounded) { m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce)); }          // jump!
             }
         }
 
