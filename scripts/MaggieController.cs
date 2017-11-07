@@ -156,8 +156,10 @@ namespace UnityStandardAssets._2D
                     float distance = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(transform.position.x - hit.point.x), 2) + Mathf.Pow(Mathf.Abs(transform.position.y - hit.point.y), 2) );
                     if(distance < 1.0f && polarity > 0)
                     {
+                        if(clampedto != hit.collider.gameObject) { GetComponent<AudioSource>().Play(); }
                         clamped = true;
                         clampedto = hit.collider.gameObject;
+                        
                     }
                     if (distance < minHeadDist) { distance = minHeadDist; }
                     GetComponent<Rigidbody2D>().AddForce(polarity * forward * magHeadForce / distance);
