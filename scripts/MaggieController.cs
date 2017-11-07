@@ -172,6 +172,7 @@ namespace UnityStandardAssets._2D
                             {
                                 if(distance < minPulseDist) { distance = minPulseDist; }
                                 GetComponent<Rigidbody2D>().AddForce(polarity * forward * pulseForce / distance);
+                                gun.GetComponent<AudioSource>().Play();                                             // play the pulse sound effect
                                 pulseReady = false;
                             }
                         }
