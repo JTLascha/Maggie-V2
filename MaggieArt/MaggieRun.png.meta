@@ -1,0 +1,395 @@
+fileFormatVersion: 2
+guid: ecc817ca1af542c479810f4d07204bb2
+timeCreated: 1495692263
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: MaggieRun_0
+    21300002: MaggieRun_1
+    21300004: MaggieRun_2
+    21300006: MaggieRun_3
+    21300008: MaggieRun_4
+    21300010: MaggieRun_5
+    21300012: MaggieRun_6
+    21300014: MaggieRun_7
+    21300016: MaggieRun_8
+    21300018: MaggieRun_9
+    21300020: MaggieRun_10
+    21300022: MaggieRun_11
+    21300024: MaggieRun_12
+    21300026: MaggieRun_13
+    21300028: MaggieRun_14
+    21300030: MaggieRun_15
+    21300032: MaggieRun_16
+    21300034: MaggieRun_17
+    21300036: MaggieRun_18
+    21300038: MaggieRun_19
+    21300040: MaggieRun_20
+    21300042: MaggieRun_21
+    21300044: MaggieRun_22
+    21300046: MaggieRun_23
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MaggieRun_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 1113
+        width: 181
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_1
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 1137
+        width: 226
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_2
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 1155
+        width: 234
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_3
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 1175
+        width: 247
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_4
+      rect:
+        serializedVersion: 2
+        x: 1129
+        y: 1151
+        width: 229
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_5
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 868
+        width: 202
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_6
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 839
+        width: 166
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_7
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 839
+        width: 145
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_8
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 836
+        width: 119
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_9
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 831
+        width: 81
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_10
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 558
+        width: 75
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_11
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 556
+        width: 111
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_12
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 555
+        width: 156
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_13
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 570
+        width: 194
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_14
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 598
+        width: 224
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_15
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 355
+        width: 241
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_16
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 315
+        width: 225
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_17
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 308
+        width: 216
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_18
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 292
+        width: 178
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_19
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 292
+        width: 154
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_20
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 17
+        width: 113
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_21
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 14
+        width: 93
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_22
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 9
+        width: 138
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MaggieRun_23
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 10
+        width: 166
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
