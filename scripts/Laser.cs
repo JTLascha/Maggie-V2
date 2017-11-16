@@ -5,7 +5,6 @@ using UnityEngine;
 public class Laser : MonoBehaviour {
 
     public float speed;					//input speed into var field
-    public bool bullet = true;			//bool for use in Boundary script
     private Rigidbody rb;
     
    

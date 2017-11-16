@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DestructionBoundary : MonoBehaviour {
 
-    private bool bullet;
                                                 //destroys laser bullets after boundary
     void OnTriggerExit(Collider other)
     {
