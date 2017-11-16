@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour {
 
-    public float speed;
-    public bool bullet = true;
+    public float speed;					//input speed into var field
+    public bool bullet = true;			//bool for use in Boundary script
     private Rigidbody rb;
     
    
@@ -15,7 +15,7 @@ public class Laser : MonoBehaviour {
         rb.velocity = transform.right * speed;
     }
 
-    private void OnCollisionEnter()         //desruct on collision
+    private void OnCollisionEnter()         //destruct on collision with anything
     {
         Destroy(gameObject);
     }

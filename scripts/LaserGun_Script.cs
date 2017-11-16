@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserGun_Script : MonoBehaviour {
-    public GameObject shot;
-    public Transform shotSpawn;
-    public float fireRate;
-
+    public GameObject shot;				//put Bolt into field
+    public float fireRate;				//input # fireRate							
     private float nextFire=0;
-
+	
+	//public GameObject gun;			//create vector point for shotSpawn
+    //public Transform shotSpawn;		//input laser GO into shot variable
    
     void Update()
     {
@@ -20,7 +20,7 @@ public class LaserGun_Script : MonoBehaviour {
         if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            Instantiate(shot, transform.position, transform.rotation);
         }
 
         //rotation of laser gun

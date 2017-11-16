@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class DestructionBoundary : MonoBehaviour {
 
-    public bool bullet;
+    private bool bullet;
                                                 //destroys laser bullets after boundary
     void OnTriggerExit(Collider other)
     {
         Laser controlscript = other.GetComponent<Laser>();
-        bullet = controlscript.bullet;
-        if (bullet==true)
-            Destroy(other.gameObject);
+		if(controlscript!=null){				//returns not null if compenent is a laser
+			//bullet = controlscript.bullet;	//if it is a laser, then the boundary deletes it
+			//if (bullet==true)					//commented out because all lasers should have bullet==true
+				Destroy(other.gameObject);
+		}
     }
 }
