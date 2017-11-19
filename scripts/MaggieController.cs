@@ -83,7 +83,7 @@ namespace UnityStandardAssets._2D
         public GameObject clampedto;
 
         override public void damage() {
-            // put damage code here *********
+            Application.LoadLevel(Application.loadedLevelName);
         }
 
         private void Awake()
@@ -109,8 +109,10 @@ namespace UnityStandardAssets._2D
             if (magTimer > 0f)                                                              // but if the timer is more than zero,
             {
                 magPause = true;                                                            // magPause is true and the timer counts down
-                magTimer = magTimer - Time.deltaTime;                                    //**
+                magTimer = magTimer - Time.deltaTime;
             }
+                /*
+            
             //* This section of Update() handles the input for the magnet boots.
             if (polarity > 0f && Input.GetAxis("Vertical") >= 0f && !clamped) { bootsActive = false; }             // if polarity is positive, boots aren't active while the button isn't held down
             if (Input.GetAxis("Vertical") >= 0f) { readyForBoots = true; }                          // it's only ready for input if the vertical axis has been 0 or more
@@ -119,7 +121,7 @@ namespace UnityStandardAssets._2D
                 readyForBoots = false;                                                                  // no longer ready for input
                 if (bootsActive) { bootsActive = false; }                                               // if boots were active they now aren't
                 else { bootsActive = true; }                                                            // if boots weren't active they now are
-            }                                                                                   //**
+            }                                                                            */       //**
         }
 
         private void FixedUpdate()
@@ -150,6 +152,7 @@ namespace UnityStandardAssets._2D
 
             // ************************************ MAG GUN *****************************************
             clamped = false;
+
 			if (!magPause) {
 				LayerMask layer = bombBotMask | magMask | terrainMask;     // raycast should only care about terrain, bomb bots, and metal
 				RaycastHit2D hit = Physics2D.Raycast (transform.position, forward, magHeadRange, layer);
@@ -162,35 +165,38 @@ namespace UnityStandardAssets._2D
 					if (objectLayer == bombBotMask) {
 						hit.collider.SendMessage ("LockOn");
 					} else if (objectLayer == magMask) {
-						if (objectDistance < 1.0f && polarity > 0) {
-							if (clampedto != hit.collider.gameObject) {
-								GetComponent<AudioSource> ().Play ();
-							}
-							clamped = true;
-							clampedto = hit.collider.gameObject;
+						if (hit.collider.gameObject.tag == "saw") {
+							hit.collider.SendMessage ("LockOn");
+						} else {
+							if (objectDistance < 1.0f && polarity > 0) {
+								if (clampedto != hit.collider.gameObject) {
+									GetComponent<AudioSource> ().Play ();
+								}
+								clamped = true;
+								clampedto = hit.collider.gameObject;
 	                        
-						}
-						if (objectDistance < minHeadDist) {
-							objectDistance = minHeadDist;
-						}
-						GetComponent<Rigidbody2D> ().AddForce (polarity * forward * magHeadForce / objectDistance);
-						if (!clamped) {
-							// if click, add lots of force in the direction. This is the pulse.
-							if (pulseReady) {
-								if (pulse) {
-									if (objectDistance < minPulseDist) {
-										objectDistance = minPulseDist;
+							}
+							if (objectDistance < minHeadDist) {
+								objectDistance = minHeadDist;
+							}
+							GetComponent<Rigidbody2D> ().AddForce (polarity * forward * magHeadForce / objectDistance);
+							if (!clamped) {
+								// if click, add lots of force in the direction. This is the pulse.
+								if (pulseReady) {
+									if (pulse) {
+										if (objectDistance < minPulseDist) {
+											objectDistance = minPulseDist;
+										}
+										GetComponent<Rigidbody2D> ().AddForce (polarity * forward * pulseForce / objectDistance);
+										gun.GetComponent<AudioSource> ().Play ();                                             // play the pulse sound effect
+										pulseReady = false;
 									}
-									GetComponent<Rigidbody2D> ().AddForce (polarity * forward * pulseForce / objectDistance);
-									gun.GetComponent<AudioSource> ().Play ();                                             // play the pulse sound effect
-									pulseReady = false;
 								}
 							}
 						}
 					}
 				}
 			}
-
 
             // ************************************ MAG HEAD ****************************************
             /*
