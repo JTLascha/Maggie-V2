@@ -54,8 +54,7 @@ namespace UnityStandardAssets._2D
         public float minPulseDist = 5f;          // distance at which the pulse is at maximum power
         public float pulseForce = 100f;
         int magMask;                             // layermask that magnet affects
-        int bombBotMask;			             // layermask for bomb bot
-		int terrainMask;                         // layermask for terrain
+	int bombBotMask;			 // layermask for bomb bot
         public bool magPause = false;            // true to escape head magnet pull
         float magTimer = 0f;                     // timer for magPause
         public float magPauseLength = 0.25f;     // length of magPause
@@ -95,13 +94,12 @@ namespace UnityStandardAssets._2D
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
             magMask = LayerMask.GetMask("metal");                       // sets layer the magnets can interact with
 			bombBotMask = LayerMask.GetMask("bomb bot");
-			terrainMask = LayerMask.GetMask ("terrain");
             if (startFaceLeft == true) { Flip(); }                       // starts Maggie facing left instead of right.
         }
 
         private void Update()
         {
-			forward = gun.transform.right; 
+            forward = gun.transform.right; 
             if(transform.localScale.x < 0) { forward = forward * -1; }
             if (reverseEnabled == true && Input.GetButtonDown("Reverse")) { ReversePolarity(); }        // lets Maggie reverse polarity with input if it's enabled.
 
@@ -145,58 +143,55 @@ namespace UnityStandardAssets._2D
             }
             m_Anim.SetBool("Ground", m_Grounded);
 
-
             // Set the vertical animation
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
 
 
+
             // ************************************ MAG GUN *****************************************
             clamped = false;
+            if (!magPause)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, forward, magHeadRange, magMask);
+                if(hit)
+                {
+                    float distance = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(transform.position.x - hit.point.x), 2) + Mathf.Pow(Mathf.Abs(transform.position.y - hit.point.y), 2) );
+                    if(distance < 1.0f && polarity > 0)
+                    {
+                        if(clampedto != hit.collider.gameObject) { GetComponent<AudioSource>().Play(); }
+                        clamped = true;
+                        clampedto = hit.collider.gameObject;
+                        
+                    }
+                    if (distance < minHeadDist) { distance = minHeadDist; }
+                    GetComponent<Rigidbody2D>().AddForce(polarity * forward * magHeadForce / distance);
+                    if (!clamped)
+                    {
+                        // if click, add lots of force in the direction. This is the pulse.
+                        if (pulseReady)
+                        {
+                            if(pulse)
+                            {
+                                if(distance < minPulseDist) { distance = minPulseDist; }
+                                GetComponent<Rigidbody2D>().AddForce(polarity * forward * pulseForce/ distance);
 
-			if (!magPause) {
-				LayerMask layer = bombBotMask | magMask | terrainMask;     // raycast should only care about terrain, bomb bots, and metal
-				RaycastHit2D hit = Physics2D.Raycast (transform.position, forward, magHeadRange, layer);
+                                gun.GetComponent<AudioSource>().Play();                                             // play the pulse sound effect
+                                pulseReady = false;
+                            }
+                        }
+                    }
+                }
+            }
 
-				if (hit) {
-					float objectDistance = hit.distance;
-					int objectLayer = 1 << hit.collider.gameObject.layer;
-				
+	    // tells a bomb bot to lock on if Maggie points her magnet at it
+	    if (!magPause) {
+	        RaycastHit2D botHit = Physics2D.Raycast (transform.position, forward, magHeadRange, bombBotMask);   // *** Potential problem: This could allow a bombbot to detect the magnet through a wall.
+		    if (botHit) {
+	                botHit.collider.SendMessage ("LockOn");
+	            }
+	    }
+            
 
-					if (objectLayer == bombBotMask) {
-						hit.collider.SendMessage ("LockOn");
-					} else if (objectLayer == magMask) {
-						if (hit.collider.gameObject.tag == "saw") {
-							hit.collider.SendMessage ("LockOn");
-						} else {
-							if (objectDistance < 1.0f && polarity > 0) {
-								if (clampedto != hit.collider.gameObject) {
-									GetComponent<AudioSource> ().Play ();
-								}
-								clamped = true;
-								clampedto = hit.collider.gameObject;
-	                        
-							}
-							if (objectDistance < minHeadDist) {
-								objectDistance = minHeadDist;
-							}
-							GetComponent<Rigidbody2D> ().AddForce (polarity * forward * magHeadForce / objectDistance);
-							if (!clamped) {
-								// if click, add lots of force in the direction. This is the pulse.
-								if (pulseReady) {
-									if (pulse) {
-										if (objectDistance < minPulseDist) {
-											objectDistance = minPulseDist;
-										}
-										GetComponent<Rigidbody2D> ().AddForce (polarity * forward * pulseForce / objectDistance);
-										gun.GetComponent<AudioSource> ().Play ();                                             // play the pulse sound effect
-										pulseReady = false;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
 
             // ************************************ MAG HEAD ****************************************
             /*
@@ -265,7 +260,7 @@ namespace UnityStandardAssets._2D
                         //
 
                     }
-                } */
+                }*/
             // *******************************************************************************************
             if (clamped)
             {
@@ -285,6 +280,7 @@ namespace UnityStandardAssets._2D
         /*data.text = "distance: " + testDist + "\ngravity: " + GetComponent<Rigidbody2D>().gravityScale +
             "\nvelocity: " + GetComponent<Rigidbody2D>().velocity.y;*/
         //
+
 
 
         public void MoveWith(GameObject v)
