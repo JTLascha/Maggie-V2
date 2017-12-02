@@ -24,7 +24,7 @@ GameObject:
   - 58: {fileID: 58000013894566572}
   m_Layer: 9
   m_Name: Saw
-  m_TagString: Untagged
+  m_TagString: metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,7 @@ CircleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delta: 1.5
   speed: 2
-  chase_speed: 2
+  chase_speed: 3
 --- !u!212 &212000011976479496
 SpriteRenderer:
   m_ObjectHideFlags: 1
