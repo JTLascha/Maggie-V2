@@ -15,16 +15,19 @@ using UnityEngine;
 public class BombBot : damageable {
 	public GameObject maggie;
 	public float chase_speed = 10f;
-	public float patrol_speed = 5f;
+
+	// current_destination is where the bomb bot is currently headed (either to patrol_start or patrol_end)
+	public float patrol_speed = 2f;
 	public Vector3 patrol_start;
 	public Vector3 current_destination;
 	public Vector3 patrol_end;
-	public bool locked_on;
+
+
+	public bool locked_on = false;
 	public bool patrolling = true;
 	private float explosion_radius = 3f;	
 
 	void Start () {
-		locked_on = false;
 		patrol_start = transform.position;
 		current_destination = patrol_end;
 	}
@@ -37,12 +40,13 @@ public class BombBot : damageable {
 		}
 	}
 
+	// Give chase to Maggie!
 	void Chase() {
 		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
-
 		rb.velocity = chase_speed * (Vector2)(maggie.transform.position - transform.position).normalized;
 	}
 
+	// move back and forth between patrol_start and patrol_end
 	void Patrol() {
 		if (transform.position == current_destination && current_destination == patrol_end) {
 			current_destination = patrol_start;
@@ -60,6 +64,7 @@ public class BombBot : damageable {
 		patrolling = false;
 	}
 
+	// On collision, calls damage() on anything within the explosion radius
 	private void OnCollisionEnter2D () {
 		locked_on = false;
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosion_radius);
