@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class DestructionBoundary : MonoBehaviour {
 
-                                                //destroys laser bullets after boundary
+/*Attach to 2D plane w/ Box Collider
+ lasers will delete when contact is made with edge of plane */
+ 
+                                               
     void OnTriggerExit(Collider other)
     {
         Laser controlscript = other.GetComponent<Laser>();
